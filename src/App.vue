@@ -11,22 +11,23 @@
 </template>
 
 <script>
+  import Store from './windowstore'
+  console.log(Store)
 export default {
   data: function () {
     return {
       title: 'this is a todo list',
-      items: [
-        {
-            label: 'coding',
-            isFinished: false
-        },
-        {
-            label: 'wal',
-            isFinished: true
-        }
-      ],
+      items: Store.fetch(),
       newitem: ''
     }
+  },
+  watch: {
+      items: {
+          handler: function (value,oldvalue) {
+            Store.save(this.items)
+          },
+        deep: true
+      }
   },
   methods: {
       toggleFinish: function (item) {
