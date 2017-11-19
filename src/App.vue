@@ -16,6 +16,7 @@
 <script>
 import Store from './windowstore'
 export default {
+    name: 'todolist',
   data: function () {
     return {
       title: 'ys\'s shabby todo list',
